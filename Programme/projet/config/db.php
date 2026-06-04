@@ -11,8 +11,10 @@ function getDb() {
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             ]
         );
+        $db->exec("SET NAMES utf8mb4");
     }
     return $db;
+
 }
 $base_url = '/Collaboration_GL_2025-2026/Programme/projet';
 

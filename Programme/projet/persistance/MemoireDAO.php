@@ -54,8 +54,24 @@ class MemoireDAO {
         $stmt->execute([':q' => $q]);
         return $this->hydraterListe($stmt);
     }
-
-        // Soumettre un mémoire
+    // Créer un mémoire directement publié (anciens mémoires)
+    public function createDirect(Memoire $m): int {
+        $stmt = $this->pdo->prepare("
+            INSERT INTO memoire (theme, resumer, fichier_pdf, date_soumission, statut, mots_cle, annee, etudiant_id)
+            VALUES (:theme, :resumer, :fichier_pdf, :date_soumission, 'valide', :mots_cle, :annee, :etudiant_id)
+        ");
+        $stmt->execute([
+            ':theme'           => $m->getTheme(),
+            ':resumer'         => $m->getResumer(),
+            ':fichier_pdf'     => $m->getFichierPdf(),
+            ':date_soumission' => $m->getDateSoumission(),
+            ':mots_cle'        => $m->getMotsCle(),
+            ':annee'           => $m->getAnnee(),
+            ':etudiant_id'     => $m->getEtudiantId(),
+        ]);
+        return (int)$this->pdo->lastInsertId();
+    }
+    // Soumettre un mémoire
     public function create(Memoire $m): int {
         $stmt = $this->pdo->prepare("
             INSERT INTO memoire (theme, resumer, fichier_pdf, date_soumission, statut, mots_cle, annee, etudiant_id, professeur_id)

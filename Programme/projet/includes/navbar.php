@@ -14,6 +14,7 @@ $routes = [
         'diplomes'   => $base_url . '/presentation/direction/diplomes.php',
         'enseignants' => $base_url . '/presentation/direction/enseignants.php',
         'memoires'    => $base_url . '/presentation/direction/memoires.php',
+        'anciens memoires'    => $base_url . '/presentation/direction/memoires_anciens.php',
         'parametres'  => $base_url . '/presentation/direction/parametres.php',
     ],
     'professeur' => [
@@ -65,12 +66,14 @@ function isActive(string $page): string {
                     <a href="<?= $r['enseignants'] ?>" class="dropdown-item <?= isActive('enseignants.php') ?>">
                         <span>👨‍🏫</span> Enseignants
                     </a>
-                    
                 </div>
             </div>
 
             <a href="<?= $r['memoires'] ?>" class="nav-item <?= isActive('memoires.php') ?>">
                 <span class="icon">📄</span><span>Mémoires</span>
+            </a>
+            <a href="<?= $base_url ?>/presentation/direction/memoires_anciens.php" class="nav-item <?= isActive('memoires_anciens.php') ?>">
+                <span class="icon">📥</span><span>Anciens mémoires</span>
             </a>
             <a href="<?= $r['parametres'] ?>" class="nav-item <?= isActive('parametres.php') ?>">
                 <span class="icon">⚙️</span><span>Paramètres</span>

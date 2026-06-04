@@ -8,6 +8,9 @@ require_once '../../config/db.php';
 require_once '../../persistance/MemoireDAO.php';
 require_once '../../persistance/CommentaireDAO.php';
 require_once '../../metier/Commentaire.php';
+require_once '../../persistance/LikeDAO.php';
+
+$likeDAO = new LikeDAO(getDb());
 
 $memoireDAO     = new MemoireDAO(getDb());
 $commentaireDAO = new CommentaireDAO(getDb());
@@ -81,8 +84,7 @@ if (isset($_GET['id'])) {
                     </span>
                 </p>
                 <p style="margin-top:12px;">
-                    <a href="../../assets/uploads/<?= htmlspecialchars($memoireDetail->getFichierPdf()) ?>"
-                       target="_blank" class="btn btn-outline btn-sm">📄 Voir le PDF</a>
+                    <a href="detail.php?id=<?= $m->getIdMemoir() ?>" class="btn btn-outline btn-sm">👁 Consulter</a>
                 </p>
 
                 <hr style="margin:20px 0; border-color:#F0F0F0;"/>
@@ -140,10 +142,9 @@ if (isset($_GET['id'])) {
                         } ?>
                     </span>
                     <div class="actions">
-                        <a href="?id=<?= $m->getIdMemoir() ?>" class="btn btn-outline btn-sm">Consulter</a>
-                        <a href="../../assets/uploads/<?= htmlspecialchars($m->getFichierPdf()) ?>"
-                           target="_blank" class="btn btn-primary btn-sm">📄 PDF</a>
+                        <a href="detail.php?id=<?= $m->getIdMemoir() ?>" class="btn btn-primary btn-sm">👁 Consulter</a>
                     </div>
+                    <p class="meta">❤️ <?= $likeDAO->compter($m->getIdMemoir()) ?></p>
                 </div>
                 <?php endforeach; ?>
             <?php endif; ?>
