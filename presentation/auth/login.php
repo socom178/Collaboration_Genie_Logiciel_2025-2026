@@ -70,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Connexion — UATM Mémoires</title>
-    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/Programme/projet/assets/css/loginstyle.css"/>
-    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/Programme/projet/assets/css/style.css"/>
+    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/assets/css/loginstyle.css"/>
+    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/assets/css/style.css"/>
 
 </head>
 <body>

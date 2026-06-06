@@ -5,7 +5,7 @@ $page_courante = basename($_SERVER['PHP_SELF']);
 $role          = $_SESSION['role'] ?? '';
 $nom_complet   = ($_SESSION['prenom'] ?? '') . ' ' . ($_SESSION['nom'] ?? '');
 
-$base_url = '/Collaboration_GL_2025-2026/Programme/projet';
+$base_url = '/Collaboration_GL_2025-2026';
 
 $routes = [
     'direction' => [
@@ -38,7 +38,7 @@ function isActive(string $page): string {
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Connexion — UATM Mémoires</title>
-    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/Programme/projet/assets/css/navstyle.css"/>
+    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/assets/css/navstyle.css"/>
 </head>
 
 <aside class="sidebar" id="sidebar">
