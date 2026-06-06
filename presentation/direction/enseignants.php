@@ -41,7 +41,7 @@ $enseignants = $dao->findAll();
     <meta charset="UTF-8"/>
     <title>Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <link rel="icon" type="image/png" href="<?= $base_url ?>/assets/img/logo_GASA.png">
+    <link rel="icon" type="image/png" href="<?= $base_url ?>../../assets/img/logo_GASA.png">
 </head>
 <div class="main-content">
     <button class="hamburger" onclick="ouvrirMenu()" style="display:none;" id="hamburger">

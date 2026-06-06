@@ -4,7 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /Collaboration_GL_2025-2026/projet_memoires_uatm_complet/projet/presentation/auth/login.php');
+    header('Location: /Collaboration_GL_2025-2026/auth/login.php');
     exit;
 }
 
@@ -23,6 +23,6 @@ $base  = str_repeat('../', $depth);
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Gestion Mémoires — UATM</title>
-    <link rel="stylesheet" href="<?= $base ?>assets/css/style.css"/>
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
 </head>
 <body>

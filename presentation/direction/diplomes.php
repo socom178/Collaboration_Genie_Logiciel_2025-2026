@@ -53,7 +53,7 @@ include __DIR__ . '/../../includes/navbar.php';
     <meta charset="UTF-8"/>
     <title>Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <link rel="icon" type="image/png" href="<?= $base_url ?>/assets/img/logo_GASA.png">
+    <link rel="icon" type="image/png" href="<?= $base_url ?>../../assets/img/logo_GASA.png">
 </head>
 <div class="main-content">
     <div class="topbar">

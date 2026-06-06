@@ -16,6 +16,6 @@ function getDb() {
     return $db;
 
 }
-$base_url = '/Collaboration_GL_2025-2026/Programme/projet';
+$base_url = '';
 
 ?>

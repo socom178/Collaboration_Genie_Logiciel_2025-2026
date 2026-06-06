@@ -5,27 +5,27 @@ $page_courante = basename($_SERVER['PHP_SELF']);
 $role          = $_SESSION['role'] ?? '';
 $nom_complet   = ($_SESSION['prenom'] ?? '') . ' ' . ($_SESSION['nom'] ?? '');
 
-$base_url = '/Collaboration_GL_2025-2026';
+$base_url = '';
 
 $routes = [
     'direction' => [
-        'dashboard' => $base_url . '/presentation/direction/dashboard.php',
-        'etudiants' => $base_url . '/presentation/direction/etudiants.php',
-        'diplomes'   => $base_url . '/presentation/direction/diplomes.php',
-        'enseignants' => $base_url . '/presentation/direction/enseignants.php',
-        'memoires'    => $base_url . '/presentation/direction/memoires.php',
-        'anciens memoires'    => $base_url . '/presentation/direction/memoires_anciens.php',
-        'parametres'  => $base_url . '/presentation/direction/parametres.php',
+        'dashboard' => $base_url . '../../presentation/direction/dashboard.php',
+        'etudiants' => $base_url . '../../presentation/direction/etudiants.php',
+        'diplomes'   => $base_url . '../../presentation/direction/diplomes.php',
+        'enseignants' => $base_url . '../../presentation/direction/enseignants.php',
+        'memoires'    => $base_url . '../../presentation/direction/memoires.php',
+        'anciens memoires'    => $base_url . '../../presentation/direction/memoires_anciens.php',
+        'parametres'  => $base_url . '../../presentation/direction/parametres.php',
     ],
     'professeur' => [
-        'dashboard'  => $base_url . '/presentation/enseignant/dashboard.php',
-        'validation' => $base_url . '/presentation/enseignant/validation.php',
-        'memoires'   => $base_url . '/presentation/enseignant/memoires.php',
+        'dashboard'  => $base_url . '../../presentation/enseignant/dashboard.php',
+        'validation' => $base_url . '../../presentation/enseignant/validation.php',
+        'memoires'   => $base_url . '../../presentation/enseignant/memoires.php',
     ],
     'etudiant' => [
-        'dashboard' => $base_url . '/presentation/etudiant/dashboard.php',
-        'explorer'  => $base_url . '/presentation/etudiant/memoires.php',
-        'soumettre' => $base_url . '/presentation/etudiant/soumettre.php',
+        'dashboard' => $base_url . '../../presentation/etudiant/dashboard.php',
+        'explorer'  => $base_url . '../../presentation/etudiant/memoires.php',
+        'soumettre' => $base_url . '../../presentation/etudiant/soumettre.php',
     ],
 ];
 $r = $routes[$role] ?? [];
@@ -43,7 +43,7 @@ function isActive(string $page): string {
 
 <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-        <img src="<?= $base_url ?>/assets/img/logo_GASA.png" alt="UATM">
+        <img src="<?= $base_url ?>../../assets/img/logo_GASA.png" alt="UATM">
         <h2>Gestion des<br/>mémoires soutenus</h2>
     </div>
 
@@ -180,7 +180,7 @@ function isActive(string $page): string {
 
     <div class="sidebar-footer">
         Connecté : <strong style="color:white"><?= htmlspecialchars($nom_complet) ?></strong><br/>
-        <a href="<?= $base_url ?>/presentation/auth/logout.php">Se déconnecter</a>
+        <a href="<?= $base_url ?>../../presentation/auth/logout.php">Se déconnecter</a>
     </div>
 </aside>
 

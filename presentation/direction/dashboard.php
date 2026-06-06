@@ -20,6 +20,7 @@ session_start();
     $nbMemoires   = $memoireDAO->compter();
     $nbAttente    = $memoireDAO->compterEnAttente();
     $enAttente    = $memoireDAO->findByStatut('en_attente');
+    $initiales = "DE";
 ?>
 <?php include __DIR__ . '/../../includes/header.php'; ?>
 <?php include __DIR__ . '/../../includes/navbar.php'; ?>
@@ -28,7 +29,7 @@ session_start();
     <meta charset="UTF-8"/>
     <title>Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <link rel="icon" type="image/png" href="<?= $base_url ?>/assets/img/logo_GASA.png">
+    <link rel="icon" type="image/png" href="assets/img/logo_GASA.png">
 </head>
  <?php if (!empty($message)): ?>
     <div class="alert alert-danger">
@@ -47,7 +48,7 @@ session_start();
             <p>Direction des études — Vue d'ensemble</p>
         </div>
         <div class="topbar-actions">
-            <div class="user-badge"><?= $initiales ?></div>
+            <div class="user-badge">DE</div>
         </div>
     </div>
 

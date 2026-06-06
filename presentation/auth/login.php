@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            class="form-control"
                            placeholder="••••••••"
                            required/>
-                    <a href="#" class="forgot-link">Mot de passe oublié ?</a>
+                    <a href="forgot_password.php" class="forgot-link">Mot de passe oublié ?</a>       
                 </div>
 
                 <button type="submit" class="btn btn-primary"

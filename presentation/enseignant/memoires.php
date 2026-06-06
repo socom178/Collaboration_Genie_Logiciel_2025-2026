@@ -46,7 +46,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8"/>
     <title>Mémoires — Enseignant</title>
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <link rel="icon" type="image/png" href="<?= $base_url ?>/assets/img/logo_GASA.png">
+    <link rel="icon" type="image/png" href="<?= $base_url ?>../../assets/img/logo_GASA.png">
 </head>
 <body>
 <?php include '../../includes/navbar.php'; ?>
