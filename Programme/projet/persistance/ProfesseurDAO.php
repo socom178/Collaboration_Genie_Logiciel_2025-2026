@@ -63,7 +63,7 @@ class ProfesseurDAO {
 
         try {
 
-            // 🔐 données utilisables
+            // données utilisables
             $nom = $prof->getNom();
             $prenom = $prof->getPrenom();
             $email = $prof->getEmail();
@@ -72,7 +72,7 @@ class ProfesseurDAO {
             $grade = $prof->getGrade();
             $date_embauche = $prof->getDateEmbauche();
 
-            // 🔐 mot de passe temporaire
+            // mot de passe temporaire
             $passwordPlain = bin2hex(random_bytes(4));
             $passwordHash = password_hash($passwordPlain, PASSWORD_BCRYPT);
 
@@ -108,7 +108,7 @@ class ProfesseurDAO {
 
             $this->pdo->commit();
 
-            // ✉️ EMAIL (MAINTENANT OK)
+            // EMAIL 
             require_once __DIR__ . '/../service/MailerService.php';
 
             MailerService::sendMail(

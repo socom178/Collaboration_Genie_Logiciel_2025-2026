@@ -1,7 +1,4 @@
 <?php
-// ============================================================
-//  COUCHE PERSISTANCE — CommentaireDAO
-// ============================================================
 
 require_once __DIR__ . '/../config/db.php';
 require_once __DIR__ . '/../metier/Commentaire.php';
@@ -25,7 +22,6 @@ class CommentaireDAO {
         $commentaires = [];
         while ($row = $stmt->fetch()) {
             $c = new Commentaire($row['id'], $row['contenu'], $row['date_envoie'], $row['personne_id'], $row['memoire_id']);
-            // Données supplémentaires pour l'affichage
             $c->auteur = $row['prenom'] . ' ' . $row['nom'];
             $c->role   = $row['role'];
             $commentaires[] = $c;

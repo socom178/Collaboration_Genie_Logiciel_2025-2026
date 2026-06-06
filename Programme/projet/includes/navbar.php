@@ -38,7 +38,6 @@ function isActive(string $page): string {
 <aside class="sidebar">
     <div class="sidebar-logo">
         <img src="<?= $base_url ?>/assets/img/logo_GASA.png" alt="UATM">
-        <!--<img src="<?= $base ?>assets/img/logo.png" alt="UATM" onerror="this.style.display='none'"/>-->
         <h2>Gestion des<br/>mémoires soutenus</h2>
     </div>
 
@@ -49,7 +48,7 @@ function isActive(string $page): string {
                 <span class="icon">🏠</span><span>Tableau de bord</span>
             </a>
 
-            <!-- Utilisateurs avec sous-menu -->
+            <!-- sous-menu -->
             <div class="nav-item-dropdown <?= in_array($page_courante, ['etudiants.php','diplomes.php','enseignants.php']) ? 'open' : '' ?>">
                 <div class="nav-item dropdown-toggle" onclick="toggleDropdown(this)">
                     <span class="icon">👥</span>

@@ -54,7 +54,7 @@ class MemoireDAO {
         $stmt->execute([':q' => $q]);
         return $this->hydraterListe($stmt);
     }
-    // Créer un mémoire directement publié (anciens mémoires)
+    // Créer un mémoire pour anciens mémoires
     public function createDirect(Memoire $m): int {
         $stmt = $this->pdo->prepare("
             INSERT INTO memoire (theme, resumer, fichier_pdf, date_soumission, statut, mots_cle, annee, etudiant_id)
@@ -85,7 +85,7 @@ class MemoireDAO {
             ':mots_cle'        => $m->getMotsCle(),
             ':annee'           => $m->getAnnee(),
             ':etudiant_id'     => $m->getEtudiantId(),
-            ':professeur_id'   => $m->getProfesseurId(), // ← ajouter
+            ':professeur_id'   => $m->getProfesseurId(), 
         ]);
         $id = (int)$this->pdo->lastInsertId();
 
@@ -102,7 +102,7 @@ class MemoireDAO {
             $stmt2->execute([':etudiant_id' => $m->getEtudiantId()]);
             $etudiant = $stmt2->fetch();
 
-            // Mail à l'étudiant — confirmation de soumission
+            // Mail à l'étudiant pour confirmation de soumission
             if ($etudiant) {
                 MailerService::sendMail(
                     $etudiant['email'],
@@ -116,7 +116,7 @@ class MemoireDAO {
                 );
             }
 
-            // Mail à tous les professeurs — avertissement
+            // Mail à tous les professeurs pour avertissement
             $stmt3 = $this->pdo->query("SELECT p.email, p.nom, p.prenom FROM personne p WHERE p.role = 'professeur'");
             $professeurs = $stmt3->fetchAll();
             foreach ($professeurs as $prof) {

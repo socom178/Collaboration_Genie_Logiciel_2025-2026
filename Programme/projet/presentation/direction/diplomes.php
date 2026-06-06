@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv_diplomes'])) {
     if ($_FILES['csv_diplomes']['error'] === 0) {
         $tmp    = $_FILES['csv_diplomes']['tmp_name'];
         $handle = fopen($tmp, 'r');
-        fgetcsv($handle); // ignorer en-tête
+        fgetcsv($handle); 
         $nb = 0;
         $pdo = getDb();
         while (($ligne = fgetcsv($handle, 1000, ';')) !== false) {

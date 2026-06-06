@@ -9,7 +9,6 @@ class EtudiantDAO {
     public function __construct($db) {
         $this->pdo = $db;
     }
-    // Trouver un étudiant par matricule (connexion)
     public function findByMatricule(string $matricule): ?Etudiant {
         $stmt = $this->pdo->prepare("
             SELECT p.*, e.id as etudiant_id, e.matricule, e.type
@@ -176,14 +175,13 @@ class EtudiantDAO {
 
     // Supprimer un étudiant
     public function delete(int $personne_id): bool {
-        // Récupérer le matricule avant suppression
         $stmt = $this->pdo->prepare("
             SELECT e.matricule FROM etudiant e WHERE e.personne_id = :personne_id
         ");
         $stmt->execute([':personne_id' => $personne_id]);
         $row = $stmt->fetch();
 
-        // Supprimer dans personne (cascade supprime etudiant automatiquement)
+        // Supprimer dans personne
         $stmt2 = $this->pdo->prepare("DELETE FROM personne WHERE id = :id");
         $ok = $stmt2->execute([':id' => $personne_id]);
 
@@ -265,7 +263,7 @@ class EtudiantDAO {
 
         if ($ok) {
             $resultats['succes']++;
-            $resultats['comptes'][] = [ // ← ajouter ça
+            $resultats['comptes'][] = [
                 'matricule' => $matricule,
                 'nom'       => $nom,
                 'prenom'    => $prenom,
@@ -273,7 +271,6 @@ class EtudiantDAO {
                 'password'  => $passwordPlain
             ];
         
-            // Envoyer le mail
             require_once __DIR__ . '/../service/MailerService.php';
             MailerService::sendMail(
                 $email,
@@ -300,7 +297,6 @@ class EtudiantDAO {
     fclose($handle);
     return $resultats;
 }
-    // Hydrater
     private function hydrater(array $row): Etudiant {
         return new Etudiant(
             $row['id'] ?? 0,          

@@ -15,7 +15,6 @@ class MailService
 
         try {
 
-            // 🔧 CONFIG SMTP
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
@@ -26,13 +25,10 @@ class MailService
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            // 📤 EXPÉDITEUR
             $mail->setFrom('audiasmansoiliya@gmail.com', 'UATM GASA Système de Gestion Memoires');
 
-            // 📥 DESTINATAIRE
             $mail->addAddress($to);
 
-            // 🧾 CONTENU
             $mail->isHTML($isHtml);
             $mail->Subject = $subject;
             $mail->Body = $body;

@@ -1,14 +1,11 @@
 <?php
-// ============================================================
-//  COUCHE MÉTIER — Etudiant (hérite de Personne)
-// ============================================================
 
 require_once __DIR__ . '/Personne.php';
 
 class Etudiant extends Personne {
     private int    $etudiant_id;
     private string $matricule;
-    private string $type; // 'simple' ou 'diplome'
+    private string $type; 
 
     public function __construct(
         int    $id = 0,
@@ -45,7 +42,6 @@ class Etudiant extends Personne {
     }
 
     public function demanderUpgrade(): string {
-        // La logique de comparaison CSV est gérée dans le DAO
         return $this->matricule;
     }
 }

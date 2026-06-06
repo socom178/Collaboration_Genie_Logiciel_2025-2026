@@ -1,7 +1,4 @@
 <?php
-// ============================================================
-//  COUCHE MÉTIER — Memoire
-// ============================================================
 
 class Memoire {
     private int    $id_memoir;
@@ -9,7 +6,7 @@ class Memoire {
     private string $resumer;
     private string $fichier_pdf;
     private string $date_soumission;
-    private string $statut; // 'en_attente', 'valide', 'refuse'
+    private string $statut; 
     private string $mots_cle;
     private string $annee;
     private int    $etudiant_id;

@@ -18,7 +18,6 @@ $details  = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // 1. Extraire le ZIP
     $dossier_pdf = __DIR__ . '/../../assets/uploads/anciens/';
    
     if (!is_dir($dossier_pdf)) {
@@ -44,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // 2. Lire le CSV
     if (!$message && isset($_FILES['csv_memoires']) && $_FILES['csv_memoires']['error'] === 0) {
         $handle = fopen($_FILES['csv_memoires']['tmp_name'], 'r');
-        fgetcsv($handle, 0, ';'); // ignorer en-tête
+        fgetcsv($handle, 0, ';'); 
 
         $succes  = 0;
         $erreurs = 0;

@@ -6,7 +6,7 @@ class LikeDAO {
         $this->pdo = $db;
     }
 
-    // Liker ou unliker
+    // Liker ou ENLEVER
     public function toggleLike(int $personne_id, int $memoire_id): string {
         // Vérifier si déjà liké
         $stmt = $this->pdo->prepare("
@@ -17,7 +17,7 @@ class LikeDAO {
         $existe = $stmt->fetch();
 
         if ($existe) {
-            // Unlike
+            // enlever
             $stmt2 = $this->pdo->prepare("
                 DELETE FROM like_memoire 
                 WHERE personne_id = :personne_id AND memoire_id = :memoire_id
