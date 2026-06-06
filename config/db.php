@@ -3,9 +3,9 @@ function getDb() {
     static $db = null;
     if ($db === null) {
         $db = new PDO(
-            'mysql:host=127.0.0.1;dbname=gestion_memoires_uatm;charset=utf8',
-            'root',
-            '',
+            'mysql:host=sql7.freesqldatabase.com;dbname=sql7829562;charset=utf8mb4',
+            'sql7829562',
+            'Ke1Hiz6VAR',
             [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
