@@ -44,6 +44,11 @@ $enseignants = $dao->findAll();
     <link rel="icon" type="image/png" href="<?= $base_url ?>/assets/img/logo_GASA.png">
 </head>
 <div class="main-content">
+    <button class="hamburger" onclick="ouvrirMenu()" style="display:none;" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     <div class="topbar">
         <div class="topbar-title">
             <h1>Gestion des enseignants</h1>
@@ -57,7 +62,9 @@ $enseignants = $dao->findAll();
             <div class="alert alert-<?= $type_msg ?>"><?= $message ?></div>
         <?php endif; ?>
         <?php if (isset($_GET['msg']) && $_GET['msg'] === 'supprime'): ?>
-            <div class="alert alert-success">✅ Enseignant supprimé.</div>
+            <div class="alert alert-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                            </svg> Enseignant supprimé.</div>
         <?php endif; ?>
 
         <!-- Formulaire ajout -->
@@ -146,5 +153,26 @@ $enseignants = $dao->findAll();
 
     </div>
 </div>
+    <script>
+        function ouvrirMenu() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+        }
+
+        function fermerMenu() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+        }
+
+        function checkTaille() {
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkTaille);
+        checkTaille();
+    </script>
 </body>
 </html>

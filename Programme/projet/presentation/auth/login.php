@@ -50,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-    // 2. Direction (table direction_etude, par username)
     $admin = $dao->authentifierDirection($identifiant, $password);
     if ($admin) {
         $_SESSION['user_id'] = $admin['id'];
@@ -71,8 +70,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Connexion — UATM Mémoires</title>
-    <link rel="stylesheet" href="../../assets/css/loginstyle.css"/>
-    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/projet_memoires_uatm_complet/projet/assets/css/style.css"/></head>
+    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/Programme/projet/assets/css/loginstyle.css"/>
+    <link rel="stylesheet" href="/Collaboration_GL_2025-2026/Programme/projet/assets/css/style.css"/>
+
+</head>
 <body>
 <div class="login-page">
 

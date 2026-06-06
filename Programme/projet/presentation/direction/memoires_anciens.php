@@ -108,6 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="main-content">
     <div class="topbar">
+        <button class="hamburger" onclick="ouvrirMenu()" style="display:none;" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="topbar-title">
             <h1>Importer anciens mémoires</h1>
             <p>Publication directe sans validation</p>
@@ -132,7 +137,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <div class="card">
-            <div class="card-header"><h3>📥 Import en masse</h3></div>
+            <div class="card-header"><h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+                            </svg> Import en masse</h3></div>
             <div class="card-body">
 
                 <div class="alert alert-info">
@@ -158,7 +165,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <button type="submit" class="btn btn-primary">
-                        📥 Importer les mémoires
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+                            </svg> Importer les mémoires
                     </button>
 
                 </form>
@@ -167,5 +176,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </div>
 </div>
+<script>
+        function ouvrirMenu() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+        }
+
+        function fermerMenu() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+        }
+
+        function checkTaille() {
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkTaille);
+        checkTaille();
+    </script>
 </body>
 </html>

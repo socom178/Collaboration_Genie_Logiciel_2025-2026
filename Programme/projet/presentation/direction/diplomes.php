@@ -57,6 +57,11 @@ include __DIR__ . '/../../includes/navbar.php';
 </head>
 <div class="main-content">
     <div class="topbar">
+        <button class="hamburger" onclick="ouvrirMenu()" style="display:none;" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="topbar-title">
             <h1>Gestion des diplômés</h1>
             <p><?= count($diplomes) ?> diplômé(s) enregistré(s)</p>
@@ -70,13 +75,17 @@ include __DIR__ . '/../../includes/navbar.php';
         <?php endif; ?>
         <?php if (isset($_GET['msg'])): ?>
             <div class="alert alert-<?= $_GET['msg'] === 'upgraded' ? 'success' : 'danger' ?>">
-                <?= $_GET['msg'] === 'upgraded' ? '✅ Statut mis à jour avec succès.' : '⚠️ Matricule non trouvé dans la liste des diplômés.' ?>
+                <?= $_GET['msg'] === 'upgraded' ? '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                            </svg> Statut mis à jour avec succès.' : '⚠️ Matricule non trouvé dans la liste des diplômés.' ?>
             </div>
         <?php endif; ?>
 
         <!-- Import CSV diplômés -->
         <div class="card" style="margin-bottom:20px;">
-            <div class="card-header"><h3>📁 Importer la liste des diplômés (CSV)</h3></div>
+            <div class="card-header"><h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+                <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7z"/>
+            </svg> Importer la liste des diplômés (CSV)</h3></div>
             <div class="card-body">
                 <div class="alert alert-info">
                     Format attendu : <strong>matricule, nom, prenom, filiere, annee</strong>
@@ -86,7 +95,9 @@ include __DIR__ . '/../../includes/navbar.php';
                         <label>Fichier CSV des diplômés</label>
                         <input type="file" name="csv_diplomes" class="form-control" accept=".csv" required/>
                     </div>
-                    <button class="btn btn-primary" type="submit">📤 Importer</button>
+                    <button class="btn btn-primary" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up-fill" viewBox="0 0 16 16">
+                                <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2m2.354 5.146a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0z"/>
+                            </svg> Importer</button>
                 </form>
             </div>
         </div>
@@ -130,5 +141,26 @@ include __DIR__ . '/../../includes/navbar.php';
 
     </div>
 </div>
+    <script>
+        function ouvrirMenu() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+        }
+
+        function fermerMenu() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+        }
+
+        function checkTaille() {
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkTaille);
+        checkTaille();
+    </script>
 </body>
 </html>

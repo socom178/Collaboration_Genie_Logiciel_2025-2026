@@ -75,6 +75,11 @@ if (isset($_GET['id'])) {
 
 <div class="main-content">
     <div class="topbar">
+        <button class="hamburger" onclick="ouvrirMenu()" style="display:none;" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="topbar-title">
             <h1>Validation des mémoires</h1>
             <p><?= count($enAttente) ?> mémoire(s) en attente</p>
@@ -112,7 +117,9 @@ if (isset($_GET['id'])) {
                     <a href="?valider=<?= $memoireDetail->getIdMemoir() ?>"
                        class="btn btn-success"
                        onclick="return confirm('Valider ce mémoire ?')">
-                        ✅ Valider
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                            </svg> Valider
                     </a>
 
                     <!-- Refuser -->
@@ -139,7 +146,9 @@ if (isset($_GET['id'])) {
             <div class="card-header"><h3>⏳ Mémoires en attente</h3></div>
             <div class="card-body">
                 <?php if (empty($enAttente)): ?>
-                    <div class="alert alert-success">✅ Aucun mémoire en attente.</div>
+                    <div class="alert alert-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                            </svg> Aucun mémoire en attente.</div>
                 <?php else: ?>
                     <div class="table-wrap">
                         <table>
@@ -155,7 +164,9 @@ if (isset($_GET['id'])) {
                                     <td style="display:flex; gap:6px;">
                                         <a href="?id=<?= $m->getIdMemoir() ?>" class="btn btn-primary btn-sm">Examiner</a>
                                         <a href="?valider=<?= $m->getIdMemoir() ?>" class="btn btn-success btn-sm"
-                                           onclick="return confirm('Valider ?')">✅</a>
+                                           onclick="return confirm('Valider ?')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+                            </svg></a>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -168,5 +179,26 @@ if (isset($_GET['id'])) {
 
     </div>
 </div>
+<script>
+        function ouvrirMenu() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+        }
+
+        function fermerMenu() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+        }
+
+        function checkTaille() {
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkTaille);
+        checkTaille();
+    </script>
 </body>
 </html>

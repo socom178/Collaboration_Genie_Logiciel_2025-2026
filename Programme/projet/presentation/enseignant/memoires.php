@@ -53,6 +53,11 @@ if (isset($_GET['id'])) {
 
 <div class="main-content">
     <div class="topbar">
+        <button class="hamburger" onclick="ouvrirMenu()" style="display:none;" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <div class="topbar-title">
             <h1>Mémoires</h1>
             <p><?= count($memoires) ?> mémoire(s)</p>
@@ -152,5 +157,26 @@ if (isset($_GET['id'])) {
 
     </div>
 </div>
+<script>
+        function ouvrirMenu() {
+            document.getElementById('sidebar').classList.add('open');
+            document.getElementById('overlay').classList.add('open');
+        }
+
+        function fermerMenu() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('open');
+        }
+
+        function checkTaille() {
+            const hamburger = document.getElementById('hamburger');
+            if (hamburger) {
+                hamburger.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkTaille);
+        checkTaille();
+    </script>
 </body>
 </html>
