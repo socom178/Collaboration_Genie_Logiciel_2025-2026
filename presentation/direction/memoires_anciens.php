@@ -128,7 +128,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php if (!empty($details)): ?>
             <div class="card" style="margin-bottom:20px;">
-                <div class="card-header"><h3>📋 Détails de l'import</h3></div>
+                <div class="card-header"><h3><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-text-fill" viewBox="0 0 16 16">
+  <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0M9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1M4.5 9a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1zM4 10.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+</svg> Détails de l'import</h3></div>
                 <div class="card-body">
                     <?php foreach ($details as $d): ?>
                         <p style="font-size:12px; margin:4px 0;"><?= htmlspecialchars($d) ?></p>
@@ -160,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="form-group">
-                        <label>Fichier ZIP contenant les PDF *</label>
+                        <label>Fichiers PDF des memoires *</label>
                         <input type="file" name="pdf[]" multiple accept=".pdf" class="form-control" required>
                         <small style="color:#888;">Tous les fichiers PDF doivent être à la racine du ZIP</small>
                     </div>
