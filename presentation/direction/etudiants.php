@@ -121,7 +121,7 @@ $etudiants = $dao->findAll();
             </svg> Importer une liste d'étudiants (CSV)</h3></div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    Format attendu : <strong>matricule, nom, prenom, filiere, annee</strong> (avec en-tête)
+                    Format attendu : <strong>matricule, nom, prenom, filiere, annee, email</strong> (avec en-tête)
                 </div>
                 <form method="POST" enctype="multipart/form-data" style="display:flex; gap:12px; align-items:flex-end;">
                     <div class="form-group" style="margin:0; flex:1;">

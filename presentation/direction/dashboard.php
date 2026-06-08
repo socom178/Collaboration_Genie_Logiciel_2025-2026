@@ -21,6 +21,12 @@ session_start();
     $nbAttente    = $memoireDAO->compterEnAttente();
     $enAttente    = $memoireDAO->findByStatut('en_attente');
     $initiales = "DE";
+
+    if(isset($_POST['action']) && $_POST['action'] === 'import_etudiants'){
+        header('Location: ../etudiants.php');
+    }else if($_POST['action'] === 'import_diplomes'){
+        header('Location: ../diplomes.php');
+    }
 ?>
 <?php include __DIR__ . '/../../includes/header.php'; ?>
 <?php include __DIR__ . '/../../includes/navbar.php'; ?>
@@ -89,11 +95,7 @@ session_start();
                         </svg> Imports CSV
                     </h3></div>
                 <div class="card-body">
-                    <form method="POST" action="etudiants.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Liste des étudiants (CSV)</label>
-                            <input type="file" name="csv_etudiants" class="form-control" accept=".csv"/>
-                        </div>
+                    <form method="POST" action="dashboard.php" enctype="multipart/form-data">
                         <button class="btn btn-primary btn-sm" type="submit" name="action" value="import_etudiants">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
@@ -102,11 +104,7 @@ session_start();
                         </button>
                     </form>
                     <hr style="margin:16px 0; border-color:#F0F0F0"/>
-                    <form method="POST" action="diplomes.php" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Liste des diplômés (CSV)</label>
-                            <input type="file" name="csv_diplomes" class="form-control" accept=".csv"/>
-                        </div>
+                    <form method="POST" action="dashboard.php" enctype="multipart/form-data">
                         <button class="btn btn-outline btn-sm" type="submit" name="action" value="import_diplomes">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>

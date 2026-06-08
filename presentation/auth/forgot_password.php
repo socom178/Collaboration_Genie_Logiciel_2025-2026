@@ -54,16 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "
             );
             try {
-    MailerService::sendMail(
-        $email,
-        "Réinitialisation de mot de passe — UATM",
-        "..."
-    );
-    var_dump("Mail envoyé");
-} catch (Exception $e) {
-    var_dump($e->getMessage());
-}
-die();
+    
             $message  = '✅ Un lien de réinitialisation a été envoyé à votre email.';
             $type_msg = 'success';
         } else {
