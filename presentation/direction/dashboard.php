@@ -23,9 +23,9 @@ session_start();
     $initiales = "DE";
 
     if(isset($_POST['action']) && $_POST['action'] === 'import_etudiants'){
-        header('Location: ../etudiants.php');
-    }else if($_POST['action'] === 'import_diplomes'){
-        header('Location: ../diplomes.php');
+        header('Location: etudiants.php');
+    }if(isset($_POST['action']) && $_POST['action'] === 'import_diplomes'){
+        header('Location: diplomes.php');
     }
 ?>
 <?php include __DIR__ . '/../../includes/header.php'; ?>
